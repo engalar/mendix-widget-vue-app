@@ -1,17 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>{{ name }}</h1>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <button v-on:click="onClick()">点我</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    HelloWorld,
+  },
+  data: () => {
+    return {};
+  },
+  props: {
+    name: {
+      type: String,
+      default: "张三",
+    },
+  },
+  methods: {
+    onClick() {
+      let data = {
+        cityname: "some value param",
+      };
+      this.$emit("showCityName", data);
+    },
+  },
+};
 </script>
 
 <style>
